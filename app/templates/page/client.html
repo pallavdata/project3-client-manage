@@ -1,0 +1,87 @@
+{% extends "main.html" %}
+{% block title %}Client{% endblock %}
+{% block body %}
+  <main>
+    {% if success %}
+    <div class="alert alert-primary" role="alert">
+      {{success}}
+    </div>
+    {% endif %}
+    {% if fail %}
+    <div class="alert alert-danger" role="alert">
+      <p>{{fail}}</p>
+      {% for field in form%}
+      {% if field.errors%}
+      <h6 class="test-size-custom">{{field.label_tag}}</h6>
+      <ul class="test-size-custom">
+      {% for error in field.errors%}
+      <li>{{error}}</li>
+      {% endfor %}
+    </ul>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="container pt-3">
+     <div class="row bg-white p-2 border">
+      <div class="col-md-8 col-sm-6 col-auto">
+                    <div class="row rounded text-bg-custom text-width-custom p-2">
+                      <div class="col-3">
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                      </div>
+                    <div class="col-9 test-size-custom">
+                    <div>
+                      Total Client
+                    </div>
+                      <div>
+                        <strong style="color: blue;">{{client}}</strong>
+                    </div>
+                  </div>
+                  </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-auto">
+      <li class="list-group-item" ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        &#43; ADD NEW CLIENTS
+    </button></li>
+  </div>
+</div>
+</div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <form action="/client/" method="post">
+              {% csrf_token %}
+            <div>
+              <label class="form-label" for="id_names">Names:</label>
+              <input class="form-control" type="text" name="names" maxlength="255" required id="id_names">
+            </div>
+            <div>
+              <label class="form-label" for="id_CompanyName">CompanyName:</label>
+              <input class="form-control" type="text" name="CompanyName" maxlength="255" required id="id_CompanyName">
+            </div>
+            <div>
+              <label class="form-label" for="id_Phone">Phone:</label>
+              <input class="form-control" type="text" name="Phone" maxlength="255" required id="id_Phone">
+            </div>
+            <div>
+              <label class="form-label" for="id_email">Email:</label>
+              <input class="form-control" type="email" name="email" maxlength="254" required id="id_email">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+{% endblock %}

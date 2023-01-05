@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+</head>
+<body>
+  <header>
+  </header>
+  <div class="custom-flex-main">
+    <div class="item-1">
+    <div class="custom-flex flex-column bg-light p-3">
+        <div class="list-group " id="card">
+            <button class="list-group-item custom-side-button list-group-item-action" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse1" aria-expanded="false" aria-controls="Collapse1" aria-label="Toggle navigation">Dashbord</button>
+            <ul class="list-group list-group-flush collapse multi-collapse1 px-4" id="Collapse1">
+                <li class="list-group-item bg-light"><a href={% url 'home' %}>HOME</a></li>
+                <li class="list-group-item bg-light"><a href={% url 'logout' %}>Logout</a></li>
+              </ul>
+            <button class="list-group-item custom-side-button list-group-item-action" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse2" aria-expanded="false" aria-controls="Collapse2" aria-label="Toggle navigation">Project</button>
+              <ul class="list-group list-group-flush collapse multi-collapse2 px-4" id="Collapse2">
+                  <li class="list-group-item bg-light"><a href={% url 'project' %}>Project</a></li>
+                  <li class="list-group-item bg-light"><a href={% url 'project_details' %}>Project Details</a></li>
+                  <li class="list-group-item bg-light"><a href={% url 'new_project' %}>New Project</a></li>
+                </ul>
+            <button class="list-group-item custom-side-button list-group-item-action" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse3" aria-expanded="false" aria-controls="Collapse3" aria-label="Toggle navigation">Client</button>
+                <ul class="list-group list-group-flush collapse multi-collapse3 px-4" id="Collapse3">
+                  <li class="list-group-item bg-light"><a href={% url 'client' %}>Client</a></li>
+                    <li class="list-group-item bg-light"><a href={% url 'manage_client' %}>Manager Client</a></li>
+                    <li class="list-group-item bg-light"><a href={% url 'client_details' %}>Client Details</a></li>
+                  </ul>
+          </div>
+        </div>
+        </div>
+{% block body %}
+
+
+{% endblock %}
+</div>
+</body>
+<script>
+  $('.dropdown-toggle').dropdown()
+</script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static "js/js.js" %}"></script>
+</html>

@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block title %}Manage-Client{% endblock %}
+{% block body %}
+
+  <main>
+    {% if success %}
+    <div class="alert alert-primary" role="alert">
+      {{success}}
+    </div>
+    {% endif %}
+    {% if fail %}
+    <div class="alert alert-danger" role="alert">
+      <p>{{fail}}</p>
+      {% for field in form%}
+      {% if field.errors%}
+      <h6 class="test-size-custom">{{field.label_tag}}</h6>
+      <ul class="test-size-custom">
+      {% for error in field.errors%}
+      <li>{{error}}</li>
+      {% endfor %}
+    </ul>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <h2 style="text-align: center;">CLIENT DETAILS</h2>
+{% for i in client %}
+<ul class="list-group p-3">
+    <li class="list-group-item" >Client Name - {{i.names}}</li>
+    <li class="list-group-item" >Company Name - {{i.CompanyName}}</li>
+    <li class="list-group-item" >Phone Number - {{i.Phone}}</li>
+    <li class="list-group-item" >Email ID - {{i.email}}</li>
+</ul>
+{% endfor %}
+
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+
+{% endblock %}

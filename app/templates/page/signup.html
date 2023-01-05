@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<style>
+  .custom-container{
+    max-width: 300px;
+    margin: auto;
+  }
+  #span-error{
+    font-size:10px;
+  }
+  form input[type="submit"]{
+    background-color: green;
+    color: aliceblue;
+  }
+  #image{
+    padding-left: calc(50% - 45px);
+    /* margin-left: auto; */
+  }
+</style>
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div class="custom-container">
+      <div id = "image">
+        <img src="https://www.loudegg.com/wp-content/uploads/2020/10/SpongeBob-SqaurePants.jpg" height="120px" alt="SpongeBob SquarePants">
+      </div>
+    <form action="/signup/" method="post">
+      {% csrf_token %}
+        {{form.non_field_errors}}
+        {% for field in form %}
+        <div> {{field.label_tag}} {{field}}
+          <ul>
+        {% for error in field.errors %}
+        <li id="span-error"><span  class="text-muted">{{error}}</span></li>
+        {% endfor %}
+      </ul>
+        </div>
+        {% endfor %}
+    <input class="form-control" type="submit" value="Submit">
+</form>
+<a href={% url 'login'%}><button type="button" class="btn btn-primary form-control mt-2">Login</button></a>
+</div>
+  </main>
+  <footer>
+
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
